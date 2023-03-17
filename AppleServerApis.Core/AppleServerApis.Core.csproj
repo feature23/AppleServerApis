@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+<!--        <TargetFramework>net5.0</TargetFramework>-->
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <WarningsAsErrors>true</WarningsAsErrors>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="AppleServerMaps.Tests" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="JWT" Version="10.0.2" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="6.0.1" />
+      <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+      <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
+    </ItemGroup>
+
+</Project>

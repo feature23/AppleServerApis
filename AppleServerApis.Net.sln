@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleServerApis.Core", "AppleServerApis.Core\AppleServerApis.Core.csproj", "{021496EA-A891-4266-8068-969CC31F1293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleServerApis.KeyVault", "AppleServerApis.KeyVault\AppleServerApis.KeyVault.csproj", "{1B8C1D8F-4F72-4438-9339-2199FA21913B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleServerApis.Tests", "AppleServerApis.Tests\AppleServerApis.Tests.csproj", "{3BB78E2A-3695-4B6C-BC05-E4A9AF6AA800}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppleServerApis.Maps", "AppleServerApis.Maps\AppleServerApis.Maps.csproj", "{CE51E51D-7ADF-488F-BD7C-54DE81260239}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{021496EA-A891-4266-8068-969CC31F1293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{021496EA-A891-4266-8068-969CC31F1293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{021496EA-A891-4266-8068-969CC31F1293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{021496EA-A891-4266-8068-969CC31F1293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B8C1D8F-4F72-4438-9339-2199FA21913B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8C1D8F-4F72-4438-9339-2199FA21913B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8C1D8F-4F72-4438-9339-2199FA21913B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8C1D8F-4F72-4438-9339-2199FA21913B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BB78E2A-3695-4B6C-BC05-E4A9AF6AA800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BB78E2A-3695-4B6C-BC05-E4A9AF6AA800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BB78E2A-3695-4B6C-BC05-E4A9AF6AA800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BB78E2A-3695-4B6C-BC05-E4A9AF6AA800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE51E51D-7ADF-488F-BD7C-54DE81260239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE51E51D-7ADF-488F-BD7C-54DE81260239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE51E51D-7ADF-488F-BD7C-54DE81260239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE51E51D-7ADF-488F-BD7C-54DE81260239}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
