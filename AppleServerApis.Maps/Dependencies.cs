@@ -1,4 +1,5 @@
 using AppleServerApis.Core;
+using JWT.Algorithms;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
@@ -8,6 +9,7 @@ public static class Dependencies
 {
     public static IServiceCollection AddAppleMapsApiServices(this IServiceCollection services,
         AppleJwtOptions jwtOptions,
+        IJwtAlgorithm jwtAlgorithm,
         Action<Type, IHttpClientBuilder>? configureHttpClientBuilder = null)
     {
         const string hostUrl = "https://maps-api.apple.com";
@@ -19,7 +21,7 @@ public static class Dependencies
         {
             var httpClientBuilder = services.AddRefitClient(interfaceType, sp => new RefitSettings
                 {
-                    AuthorizationHeaderValueGetter = AppleJwtAuthenticator.Create(sp, hostUrl, jwtOptions)
+                    AuthorizationHeaderValueGetter = AppleJwtAuthenticator.Create(sp, hostUrl, jwtOptions, jwtAlgorithm)
                 })
                 .ConfigureHttpClient(http => http.BaseAddress = baseAddress);
 

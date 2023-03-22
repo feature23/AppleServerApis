@@ -1,3 +1,4 @@
+using JWT.Algorithms;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
@@ -6,11 +7,11 @@ namespace AppleServerApis.Core;
 
 public static class AppleJwtAuthenticator
 {
-    public static Func<Task<string>> Create(IServiceProvider sp, string baseUrl, AppleJwtOptions jwtOptions)
+    public static Func<Task<string>> Create(IServiceProvider sp, string baseUrl, AppleJwtOptions jwtOptions, IJwtAlgorithm jwtAlgorithm)
     {
         var authenticationApi = RestService.For<IAppleAuthenticationApi>(baseUrl, new RefitSettings
         {
-            AuthorizationHeaderValueGetter = AppleJwt.AuthorizationHeaderValueGetter(jwtOptions, null!)
+            AuthorizationHeaderValueGetter = AppleJwt.AuthorizationHeaderValueGetter(jwtOptions, jwtAlgorithm)
         });
 
         return async () =>

@@ -15,15 +15,8 @@ internal static class AppleJwt
         };
     }
     
-    public static string Create(AppleJwtOptions options, IJwtAlgorithm algorithm, string? subject = null)
+    internal static string Create(AppleJwtOptions options, IJwtAlgorithm algorithm, string? subject = null)
     {
-        // var algorithm = (options.PrivateKeyBase64, options.KeyVaultKeyIdentifier) switch
-        // {
-        //     ({ } base64Key, _) => (IJwtAlgorithm) new ES256Algorithm(ECDsa.Create(), LoadBase64Key(base64Key)),
-        //     (null, { } keyVaultKeyIdentifier) => new AppleJwtKeyVaultEs256Algorithm(keyVaultKeyIdentifier),
-        //     _ => throw new InvalidOperationException("Azure KeyVault key identifier must be provided if base64-encoded private key is not provided.")
-        // };
-        
         var token = JwtBuilder.Create()
             .WithAlgorithm(algorithm)
             .AddHeader(HeaderName.Type, "JWT")
@@ -49,26 +42,5 @@ internal static class AppleJwt
         return condition ? builder.AddClaim(claimName, claimValue) : builder;
     }
 
-    private static ECDsa LoadBase64Key(string base64Key)
-    {
-        var derContents = ExtractDerFromPem(base64Key);
-        var cngKey = CngKey.Import(derContents, CngKeyBlobFormat.EccPublicBlob);
-        
-        return new ECDsaCng(cngKey);
-
-        // var key = ECDsa.Create();
-        // key.ImportFromPem(base64Key);
-        // return key;
-    }
     
-    // Helper function to extract DER data from a PEM string
-    private static byte[] ExtractDerFromPem(string pem)
-    {
-        const string header = "-----BEGIN ";
-        const string footer = "-----END ";
-        var startIndex = pem.IndexOf(header, StringComparison.Ordinal) + header.Length;
-        var endIndex = pem.IndexOf(footer, startIndex, StringComparison.Ordinal);
-        var base64 = pem.Substring(startIndex, endIndex - startIndex);
-        return Convert.FromBase64String(base64);
-    }
 }

@@ -1,5 +1,4 @@
-﻿using AppleServerApis.Maps.Extensions;
-using Refit;
+﻿using Refit;
 
 namespace AppleServerApis.Maps;
 
