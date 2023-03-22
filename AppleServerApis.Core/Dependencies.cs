@@ -10,6 +10,7 @@ public static class Dependencies
     
     public static IServiceCollection AddAppleCoreApiServices(this IServiceCollection services)
     {
+        // This is to deal with Apple's nonstandard "utf8" (instead of utf-8) Content-Type header encoding.
         if (!_hasRegisteredEncodingProvider)
         {
             lock (LockObj)
