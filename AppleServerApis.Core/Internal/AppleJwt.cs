@@ -1,12 +1,12 @@
-using System.Security.Cryptography;
 using JWT.Algorithms;
 using JWT.Builder;
 
-namespace AppleServerApis.Core;
+namespace AppleServerApis.Core.Internal;
 
 internal static class AppleJwt
 {
-    public static Func<Task<string>> AuthorizationHeaderValueGetter(AppleJwtOptions options, IJwtAlgorithm algorithm, string? subject = null)
+    public static Func<Task<string>> AuthorizationHeaderValueGetter(AppleJwtOptions options, IJwtAlgorithm algorithm,
+        string? subject = null)
     {
         return () =>
         {
@@ -14,7 +14,7 @@ internal static class AppleJwt
             return Task.FromResult(jwt);
         };
     }
-    
+
     internal static string Create(AppleJwtOptions options, IJwtAlgorithm algorithm, string? subject = null)
     {
         var token = JwtBuilder.Create()
@@ -36,11 +36,10 @@ internal static class AppleJwt
     {
         return condition ? builder.AddHeader(header, value) : builder;
     }
-    
-    private static JwtBuilder AddClaimIf(this JwtBuilder builder, bool condition, ClaimName claimName, string? claimValue)
+
+    private static JwtBuilder AddClaimIf(this JwtBuilder builder, bool condition, ClaimName claimName,
+        string? claimValue)
     {
         return condition ? builder.AddClaim(claimName, claimValue) : builder;
     }
-
-    
 }

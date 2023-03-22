@@ -1,3 +1,4 @@
+using AppleServerApis.Core.Internal;
 using JWT.Algorithms;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;

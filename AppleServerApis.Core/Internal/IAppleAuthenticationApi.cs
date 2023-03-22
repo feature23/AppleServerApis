@@ -1,6 +1,6 @@
 using Refit;
 
-namespace AppleServerApis.Core;
+namespace AppleServerApis.Core.Internal;
 
 [Headers("Authorization: Bearer")]
 internal interface IAppleAuthenticationApi

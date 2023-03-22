@@ -1,4 +1,5 @@
 using AppleServerApis.Core;
+using AppleServerApis.Core.Internal;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using JWT;
