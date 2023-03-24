@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace AppleServerApis.Tests;
 
+[Trait(Traits.Category, Traits.Categories.Unit)]
 public class AppleJwtTests
 {
     private readonly string _base64PemPrivateKey;
@@ -17,9 +18,10 @@ public class AppleJwtTests
     {
         var configuration = new ConfigurationBuilder()
             .AddUserSecrets<AppleJwtTests>()
+            .AddEnvironmentVariables()
             .Build();
-        _base64PemPrivateKey = configuration["Base64PemPrivateKey"]
-            ?? throw new InvalidOperationException("Failed to load \"Base64PemPrivateKey\" from user secrets.");
+        _base64PemPrivateKey = configuration["Base64PemPrivateKey"] ?? configuration["BASE64_PEM_PRIVATE_KEY"]
+            ?? throw new InvalidOperationException("Failed to load \"Base64PemPrivateKey\" or \"BASE64_PEM_PRIVATE_KEY\" from configuration.");
     }
     
     [Theory]

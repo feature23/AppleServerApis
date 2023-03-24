@@ -2,6 +2,7 @@ using AppleServerApis.Maps;
 
 namespace AppleServerApis.Tests;
 
+[Trait(Traits.Category, Traits.Categories.Unit)]
 public class LocationTests
 {
     [InlineData(0, 0, 0, 0, 0)]

@@ -1,4 +1,3 @@
-using System.Reflection;
 using AppleServerApis.Core;
 using AppleServerApis.Maps;
 using AppleServerApis.Tests.Support;
@@ -6,10 +5,10 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Refit;
 
 namespace AppleServerApis.Tests;
 
+[Trait(Traits.Category, Traits.Categories.Integration)]
 public class DependencyTests
 {
     private readonly string _base64PemPrivateKey;
@@ -20,13 +19,14 @@ public class DependencyTests
     {
         var configuration = new ConfigurationBuilder()
             .AddUserSecrets<AppleJwtTests>()
+            .AddEnvironmentVariables()
             .Build();
-        _base64PemPrivateKey = configuration["Base64PemPrivateKey"]
-            ?? throw new InvalidOperationException("Failed to load \"Base64PemPrivateKey\" from user secrets.");
-        _teamId = configuration["TeamId"]
-                  ?? throw new InvalidOperationException("Failed to load \"Base64PemPrivateKey\" from user secrets.");
-        _keyId = configuration["KeyId"]
-                 ?? throw new InvalidOperationException("Failed to load \"Base64PemPrivateKey\" from user secrets.");
+        _base64PemPrivateKey = configuration["Base64PemPrivateKey"] ?? configuration["BASE64_PEM_PRIVATE_KEY"]
+            ?? throw new InvalidOperationException("Failed to load \"Base64PemPrivateKey\" or \"BASE64_PEM_PRIVATE_KEY\" from configuration.");
+        _teamId = configuration["TeamId"] ?? configuration["TEAM_ID"]
+                  ?? throw new InvalidOperationException("Failed to load \"TeamId\" or \"TEAM_ID\" from configuration.");
+        _keyId = configuration["KeyId"] ?? configuration["KEY_ID"]
+                 ?? throw new InvalidOperationException("Failed to load \"KeyId\" or \"KEY_ID\" from configuration.");
     }
 
     [Fact]
