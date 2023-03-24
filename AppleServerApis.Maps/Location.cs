@@ -1,13 +1,23 @@
 namespace AppleServerApis.Maps;
 
+/// <summary>
+/// Constructs a location with the given latitude and longitude.
+/// </summary>
+/// <param name="Latitude">The latitude in degrees.</param>
+/// <param name="Longitude">The longitude in degrees.</param>
 public record Location(double Latitude, double Longitude)
 {
     private const double EarthRadiusInKilometers = 6367;
     
-    // Inspired by implementation here: https://github.com/bamcis-io/GeoCoordinate/blob/main/GeoCoordinate/GeoCoordinate.cs
+    /// <summary>
+    /// Computes the distance in meters between this location and the destination.
+    /// </summary>
+    /// <param name="destination">The destination location.</param>
+    /// <returns>Returns the distance in meters.</returns>
+    /// <remarks>Inspired by MIT-licensed implementation here: https://github.com/bamcis-io/GeoCoordinate/blob/main/GeoCoordinate/GeoCoordinate.cs</remarks>
     public double DistanceTo(Location destination)
     {
-        var radius = EarthRadiusInKilometers * 1000;
+        const double radius = EarthRadiusInKilometers * 1000;
 
         var deltaLatitude = DegreeToRadian(destination.Latitude - Latitude);
         var deltaLongitude = DegreeToRadian(destination.Longitude - Longitude);
@@ -20,8 +30,5 @@ public record Location(double Latitude, double Longitude)
         return distance;
     }
     
-    private static double DegreeToRadian(double degree)
-    {
-        return degree * (Math.PI / 180);
-    }
+    private static double DegreeToRadian(double degree) => degree * (Math.PI / 180);
 }
