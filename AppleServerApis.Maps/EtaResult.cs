@@ -1,5 +1,13 @@
 namespace AppleServerApis.Maps;
 
+/// <summary>
+/// Represents a single estimated travel time.
+/// </summary>
+/// <param name="Destination">The destination location.</param>
+/// <param name="TransportType">The transport type.</param>
+/// <param name="DistanceMeters">The distance in meters.</param>
+/// <param name="ExpectedTravelTimeSeconds">The expected travel time in seconds.</param>
+/// <param name="StaticTravelTimeSeconds">The static travel time in seconds.</param>
 public record EtaResult(
     Location Destination,
     string TransportType,
