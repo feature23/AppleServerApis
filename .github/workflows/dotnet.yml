@@ -27,4 +27,6 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal --filter FullyQualifiedName\!~DependencyTests
+      env:
+        BASE64_PEM_PRIVATE_KEY: ${{ secrets.BASE64_PEM_PRIVATE_KEY }}
+      run: dotnet test --no-build --verbosity normal --filter Category=Unit
